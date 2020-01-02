@@ -1,0 +1,28 @@
+﻿@model IList<string>
+@{
+    ViewBag.Title = "Imiona";
+    Layout = "_Layout";
+}
+@if (Model.Count == 0)
+{
+    <form asp-action="Names" method="post">
+        @for (int i = 0; i < 3; i++)
+        {
+            <div class="form-group">
+                <label>Imię @(i + 1):</label>
+                <input id="names" name="names" class="form-control" />
+            </div>
+        }
+        <button type="submit" class="btn btn-primary">Wyślij</button>
+    </form>
+}
+else
+{
+    <table class="table table-sm table-bordered table-striped">
+        @foreach (string name in Model)
+        {
+            <tr><th>Imię:</th><td>@name</td></tr>
+        }
+    </table>
+    <a asp-action="Names" class="btn btn-primary">Wróć</a>
+}

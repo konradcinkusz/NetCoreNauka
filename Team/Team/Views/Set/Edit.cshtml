@@ -1,0 +1,32 @@
+﻿@model SetViewModel
+
+
+<form asp-action="Edit" method="post">
+    <div class="form-group">
+        @Html.DropDownListFor(m => m.SelectedPlayer1, Model.SelectPlayer1, "Wybierz zawodnika 1")
+    </div>
+    <div class="form-group">
+        <label asp-for="Player1Points">Punkty pierwszego zawodnika</label>
+        <div><span asp-validation-for="Player1Points" class="text-danger"></span></div>
+        <input asp-for="Player1Points" class="form-control" />
+    </div>
+    <div class="form-group">
+        @Html.DropDownListFor(m => m.SelectedPlayer2, Model.SelectPlayer2, "Wybierz zawodnika 2")</divclass="form-group">
+    <div class="form-group">
+        <label asp-for="Player2Points">Punkty drugiego zawodnika</label>
+        <div><span asp-validation-for="Player2Points" class="text-danger"></span></div>
+        <input asp-for="Player2Points" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="StartTime">Czas rozpoczęcia</label>
+        <input asp-for="StartTime" type="datetime-local" name="SetStartTime" value="@Model.StartTime" />
+    </div>
+    <div class="form-group">
+        <label asp-for="EndTime">Czas Zakończenia</label>
+        <input asp-for="EndTime" type="datetime-local" name="SetEndTime" value="@Model.EndTime" />
+    </div>
+    <div class="text-center">
+        <button class="btn btn-primary" type="submit">Zapisz</button>
+        <a asp-action="Index" class="btn btn-secondary">Anuluj</a>
+    </div>
+</form>

@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" asp-href-include="~/lib/bootstrap/dist/**/*.min.css" />
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <title>Team application</title>
+</head>
+<body>
+    <div class="navbar navbar-inverse badge-dark" role="navigation">
+        <div class="row">
+            <a class="col-8 navbar-brand" href="#">Drużynówka</a>
+            @*<div class="col-4 text-right">
+                    @await Component.InvokeAsync("CartSummary")
+                </div>*@
+        </div>
+    </div>
+    <div class="row m-1 p-1">
+        <div id="categories" class="col-3">
+            @await Component.InvokeAsync("NavigationMenu")
+        </div>
+        <div class="col-9">
+            @if (TempData["message"] != null)
+            {
+                <div class="alert alert-success mt-1">@TempData["message"]</div>
+            }
+            @RenderBody()
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,23 @@
+﻿@model Dictionary<string, string>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" asp-href-include="~/lib/bootstrap/dist/**/*.min.css" />
+    <title>Wynik</title>
+</head>
+<body class="p-1">
+    <table class="table table-condensed table-bordered table-striped">
+        @foreach (var kvp in Model)
+        {
+            <tr><th>@kvp.Key</th><td>@kvp.Value</td></tr>
+        }
+    </table>
+</body>
+</html>

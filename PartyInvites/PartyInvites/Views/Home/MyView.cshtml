@@ -1,0 +1,23 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Przyjęcie sylwestrowe</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+</head>
+<body>
+    <div class="text-center">
+        @ViewBag.Greeting, (from View)!
+        <p>
+            <h2>Zapraszam na wspaniałem przyjęcie </h2>
+            <h3>(do zrobienia: zdjecia i teksty)</h3>
+        </p>
+        <a class="btn btn-primary" asp-action="RsvpForm">Wyślij RSVP</a>
+    </div>
+</body>
+</html>

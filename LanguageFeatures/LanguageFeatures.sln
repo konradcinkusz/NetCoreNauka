@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29418.71
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LanguageFeatures", "LanguageFeatures\LanguageFeatures.csproj", "{D5FD1708-8773-4F00-A256-2B27FAD6D95B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Razor", "..\Razor\Razor\Razor.csproj", "{CC4DD25F-6860-431F-8C27-6CC1C7ACB3CB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D5FD1708-8773-4F00-A256-2B27FAD6D95B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5FD1708-8773-4F00-A256-2B27FAD6D95B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5FD1708-8773-4F00-A256-2B27FAD6D95B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5FD1708-8773-4F00-A256-2B27FAD6D95B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC4DD25F-6860-431F-8C27-6CC1C7ACB3CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC4DD25F-6860-431F-8C27-6CC1C7ACB3CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC4DD25F-6860-431F-8C27-6CC1C7ACB3CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC4DD25F-6860-431F-8C27-6CC1C7ACB3CB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C9EBE412-9D7D-4FAE-934F-F645A71257D4}
+	EndGlobalSection
+EndGlobal

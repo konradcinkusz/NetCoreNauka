@@ -1,0 +1,26 @@
+﻿@model Person[]
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link rel="stylesheet" asp-href-include="~/lib/bootstrap/dist/**/*.min.css" />
+</head>
+<body class="m-1 p-1">
+    <table class="table table-bordered table-striped table-sm">
+        <tr><th>Imię</th><th>Miasto</th></tr>
+        @foreach (Person p in Model)
+        {
+            <tr><td>@p.Name</td><td>@p.City</td></tr>
+        }
+    </table>
+    <a asp-action="Index" asp-controller="Home">Łącze</a><br />
+    <a asp-action="Index" asp-controller="Home" asp-area="">Łącze</a>
+</body>
+</html>

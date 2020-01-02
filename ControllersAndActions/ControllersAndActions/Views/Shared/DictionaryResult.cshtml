@@ -1,0 +1,23 @@
+﻿@model IDictionary<string, string>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Kontrolery i akcje</title>
+    <link rel="stylesheet" asp-href-include="~/lib/bootstrap/dist/**/*.min.css" />
+</head>
+<body class="m-1 p-1">
+    <table class="table table-bordered table-sm table-striped">
+        <tr><th>Nazwa</th><th>Wartość</th></tr>
+        @foreach(string key in Model.Keys)
+        {
+            <tr><td>@key</td><td>@Model[key]</td></tr>
+        }
+    </table>
+</body>
+</html>

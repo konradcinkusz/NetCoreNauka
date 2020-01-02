@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Team>
+
+<table class="table table-striped table-bordered table-sm">
+    <tr>
+        <th class="text-right">ID</th>
+        <th>Nazwa</th>
+        <th>Zawodnicy</th>
+        <th class="text-center">Akcje</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td class="text-right">@item.Name</td>
+            <td>
+                @item.Player1.Name @item.Player1.Surname <br />
+                @item.Player2.Name @item.Player2.Surname <br />
+                @item.Player3.Name @item.Player3.Surname <br />
+                @item.Player4.Name @item.Player4.Surname <br />
+                @item.Player5.Name @item.Player5.Surname <br />
+                @item.Player6.Name @item.Player6.Surname <br />
+                @item.Player7.Name @item.Player7.Surname <br />
+                @item.Player8.Name @item.Player8.Surname <br />
+                @item.Player9.Name @item.Player9.Surname <br />
+                @item.Player10.Name @item.Player10.Surname <br />
+                @item.Player11.Name @item.Player11.Surname <br />
+                @item.Player12.Name @item.Player12.Surname <br />
+            </td>
+            <td class="text-center">
+                <form asp-action="Delete" method="post">
+                    <a asp-action="Edit" class="btn btn-sm btn-warning" asp-route-setId="@item.TeamID">
+                        Edytuj
+                    </a>
+                    <input type="hidden" name="SetID" value="@item.TeamID" />
+                    <button type="submit" class="btn btn-danger btn-sm">
+                        Usuń
+                    </button>
+                </form>
+            </td>
+        </tr>
+    }
+</table>
+
+<div class="text-center">
+    <a asp-action="Create" class="btn btn-primary">Dodaj drużynę</a>
+</div>

@@ -1,0 +1,31 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Razor</title>
+    <link rel="stylesheet" asp-href-include="~/lib/bootstrap/dist/**/*.min.css" />
+    <script  id="jsonData" type="application/json">
+        @Json.Serialize(new string[] { "Jabłka", "Pomarańcze", "Gruszki" })
+    </script>
+    <script asp-src-include="~/lib/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var list = $("#list")
+            JSON.parse($("#jsonData").text()).forEach(function (val) {
+                console.log("Wartość: " + val);
+                list.append($("<li>").text(val));
+            });
+        });
+    </script>
+</head>
+<body class="m-1 p-1">
+    To jest widok częsciowy:
+    <ul id="list"></ul>
+</body>
+</html>

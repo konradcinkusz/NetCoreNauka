@@ -1,0 +1,32 @@
+﻿@{
+    ViewBag.Title = "Osoba";
+    Layout = "_Layout";
+}
+
+@section scripts{
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("button").click(function (e) {
+                $.ajax("/Home/Body", {
+                    method: "post",
+                    contentType: "application/json",
+                    data: JSON.stringify({
+                        firstName: "Jan",
+                        lastName: "Kowalski"
+                    }),
+                    success: function (data) {
+                        $("#firstName").text(data.firstName);
+                        $("#lastName").text(data.lastName);
+                    }
+                });
+            });
+        });
+    </script>
+}
+
+<table class="table table-sm table-bordered table-striped">
+    <tr><th>Imię:</th><td id="firstName"></td></tr>
+    <tr><th>Nazwisko:</th><td id="lastName"></td></tr>
+</table>
+<button class="btn btn-primary">Wyślij</button>
