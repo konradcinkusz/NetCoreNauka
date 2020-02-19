@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SportsStore.Models
 {
-    public class OrderRepository : IOrderRepository
+    public class OrderRepository : IOrdersRepository
     {
         private DataContext context;
         public OrderRepository(DataContext ctx)

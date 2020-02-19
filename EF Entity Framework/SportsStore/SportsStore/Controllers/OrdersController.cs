@@ -8,9 +8,9 @@ namespace SportsStore.Controllers
     public class OrdersController : Controller
     {
         private IRepository productRepository;
-        private IOrderRepository ordersRepository;
+        private IOrdersRepository ordersRepository;
 
-        public OrdersController(IRepository repo, IOrderRepository orderRepo)
+        public OrdersController(IRepository repo, IOrdersRepository orderRepo)
         {
             productRepository = repo;
             ordersRepository = orderRepo;

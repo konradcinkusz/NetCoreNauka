@@ -14,6 +14,15 @@ namespace SportsStore.Models
             context = ctx;
         }
         public IEnumerable<Product> Products => context.Products.Include(p => p.Category).ToArray();
+        public PagedList<Product> GetProducts(QueryOptions options, long category = 0)
+        {
+            IQueryable<Product> query = context.Products.Include(p => p.Category);
+            if (category != 0)
+            {
+                query = query.Where(p => p.CategoryId == category);
+            }
+            return new PagedList<Product>(query, options);
+        }
         public PagedList<Product> GetProducts(QueryOptions options)
         {
             return new PagedList<Product>(context.Products.Include(p => p.Category), options);
