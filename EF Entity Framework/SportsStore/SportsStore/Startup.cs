@@ -16,10 +16,11 @@ namespace SportsStore
         public IConfiguration Configuration { get; }
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc();
+            services.AddMvc().AddJsonOptions(opts => opts.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Serialize);
             services.AddTransient<IRepository, DataRepository>();
             services.AddTransient<ICategoryRepository, CategoryRepository>();
             services.AddTransient<IOrdersRepository, OrderRepository>();
+            services.AddTransient<IWebServiceRepository, WebServiceRepository>();
             string conString = Configuration["ConnectionStrings:DefaultConnection"];
             services.AddDbContext<DataContext>(options => options.UseSqlServer(conString));
 
