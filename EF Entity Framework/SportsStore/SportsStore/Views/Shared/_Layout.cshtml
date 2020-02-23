@@ -38,6 +38,6 @@
 @functions{
     string GetClassForButton(string controller)
     {
-        return "btn btn-block" + (ViewContext.RouteData.Values["controller"] as string == controller ? "btn-primary" : "btn-outline-primary");
+        return "btn btn-block " + (ViewContext.RouteData.Values["controller"] as string == controller ? "btn-primary" : "btn-outline-primary");
     }
 }

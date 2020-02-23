@@ -17,7 +17,7 @@ namespace SportsStore.Controllers
 
         public IActionResult Index([FromQuery(Name = "options")] QueryOptions productOptions, QueryOptions catOptions, long category)
         {
-            ViewBag.Categories = categoryRepository.GetCategories(catOptions);
+            ViewBag.Categories = categoryRepository.GetCategoriesViewModels(catOptions);
             ViewBag.SelectedCategory = category;
             return View(productRepository.GetProducts(productOptions, category));
         }

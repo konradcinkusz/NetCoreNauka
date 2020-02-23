@@ -73,6 +73,7 @@ namespace SportsStore.Controllers
             context.Database.BeginTransaction();
             context.Database.ExecuteSqlCommand("DELETE FROM Orders");
             context.Database.ExecuteSqlCommand("DELETE FROM Categories");
+            context.Database.ExecuteSqlCommand("DELETE FROM Prices");
             context.Database.CommitTransaction();
             return RedirectToAction(nameof(Index));
         }
@@ -88,12 +89,14 @@ namespace SportsStore.Controllers
                     Products = new Product[] {
                     new Product {
                     Name = "Kayak", Description = "A boat for one person",
-                    PurchasePrice = 200, RetailPrice = 275
+                    PurchasePrice = 200, RetailPrice = 275,
+                    Prices = new[]{new Price { Value = 2 } }
                     },
                     new Product {
                     Name = "Lifejacket",
                     Description = "Protective and fashionable",
-                    PurchasePrice = 40, RetailPrice = 48.95m
+                    PurchasePrice = 40, RetailPrice = 48.95m,
+                    Prices = new[]{new Price { Value = 235 } }
                     },
                     }
                     },
@@ -104,12 +107,14 @@ namespace SportsStore.Controllers
                     new Product {
                     Name = "Soccer Ball",
                     Description = "FIFA-approved size and weight",
-                    PurchasePrice = 18, RetailPrice = 19.50m
+                    PurchasePrice = 18, RetailPrice = 19.50m,
+                    Prices = new[]{new Price { Value = 243 } }
                     },
                     new Product {
                     Name = "Corner Flags", Description
                     = "Give your playing field a professional touch",
-                    PurchasePrice = 32.50m, RetailPrice = 34.95m
+                    PurchasePrice = 32.50m, RetailPrice = 34.95m,
+                    Prices = new[]{new Price { Value = 293}, new Price { Value = 2933 } }
                     },
                     new Product {
                     Name = "Stadium",
