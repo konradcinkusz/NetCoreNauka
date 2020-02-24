@@ -89,14 +89,18 @@ namespace SportsStore.Controllers
                     Products = new Product[] {
                     new Product {
                     Name = "Kayak", Description = "A boat for one person",
-                    PurchasePrice = 200, RetailPrice = 275,
-                    Prices = new[]{new Price { Value = 2 } }
+                    Prices = new[]{
+                        new Price { Value = 200, PriceType = PriceType.Purchase },
+                        new Price { Value = 275, PriceType = PriceType.Retail },
+                    }
                     },
                     new Product {
                     Name = "Lifejacket",
                     Description = "Protective and fashionable",
-                    PurchasePrice = 40, RetailPrice = 48.95m,
-                    Prices = new[]{new Price { Value = 235 } }
+                    Prices = new[]{
+                        new Price { Value = 40, PriceType = PriceType.Purchase },
+                        new Price { Value = 48.95m, PriceType = PriceType.Retail },
+                    }
                     },
                     }
                     },
@@ -107,19 +111,26 @@ namespace SportsStore.Controllers
                     new Product {
                     Name = "Soccer Ball",
                     Description = "FIFA-approved size and weight",
-                    PurchasePrice = 18, RetailPrice = 19.50m,
-                    Prices = new[]{new Price { Value = 243 } }
+                    Prices = new[]{
+                        new Price { Value = 18, PriceType = PriceType.Purchase },
+                        new Price { Value = 19.50m, PriceType = PriceType.Retail },
+                    }
                     },
                     new Product {
                     Name = "Corner Flags", Description
                     = "Give your playing field a professional touch",
-                    PurchasePrice = 32.50m, RetailPrice = 34.95m,
-                    Prices = new[]{new Price { Value = 293}, new Price { Value = 2933 } }
+                    Prices = new[]{
+                        new Price { Value = 32.50m, PriceType = PriceType.Purchase },
+                        new Price { Value = 34.95m, PriceType = PriceType.Retail },
+                    }
                     },
                     new Product {
                     Name = "Stadium",
                     Description = "Flat-packed 35,000-seat stadium",
-                    PurchasePrice = 75000, RetailPrice = 79500
+                    Prices = new[]{
+                        new Price { Value = 75000, PriceType = PriceType.Purchase },
+                        new Price { Value = 79500, PriceType = PriceType.Retail },
+                    }
                     }
                     }
                     },
@@ -130,21 +141,33 @@ namespace SportsStore.Controllers
                     new Product {
                     Name = "Thinking Cap",
                     Description = "Improve brain efficiency by 75%",
-                    PurchasePrice = 10, RetailPrice = 16
+                    Prices = new[]{
+                        new Price { Value = 10, PriceType = PriceType.Purchase },
+                        new Price { Value = 16, PriceType = PriceType.Retail },
+                    }
                     },new Product {
                     Name = "Unsteady Chair", Description
                     = "Secretly give your opponent a disadvantage",
-                    PurchasePrice = 28, RetailPrice = 29.95m
+                    Prices = new[]{
+                        new Price { Value = 28, PriceType = PriceType.Purchase },
+                        new Price { Value = 29.95m, PriceType = PriceType.Retail },
+                    }
                     },
                     new Product {
                     Name = "Human Chess Board",
                     Description = "A fun game for the family",
-                    PurchasePrice = 68.50m, RetailPrice = 75
+                    Prices = new[]{
+                        new Price { Value = 68.50m, PriceType = PriceType.Purchase },
+                        new Price { Value = 75, PriceType = PriceType.Retail },
+                    }
                     },
                     new Product {
                     Name = "Bling-Bling King",
                     Description = "Gold-plated, diamond-studded King",
-                    PurchasePrice = 800, RetailPrice = 1200
+                    Prices = new[]{
+                        new Price { Value = 800, PriceType = PriceType.Purchase },
+                        new Price { Value = 1200, PriceType = PriceType.Retail },
+                    }
                     }
                     }
                     }

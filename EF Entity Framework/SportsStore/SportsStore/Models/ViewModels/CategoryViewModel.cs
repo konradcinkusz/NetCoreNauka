@@ -1,6 +1,6 @@
 ﻿using SportsStore.Models;
 
-namespace SportsStore.ViewModels
+namespace SportsStore.Models.ViewModels
 {
     public class CategoryViewModel
     {

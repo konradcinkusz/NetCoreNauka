@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SportsStore.Models.Pages;
+using SportsStore.Models.ViewModels;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -14,6 +15,7 @@ namespace SportsStore.Models
             context = ctx;
         }
         public IEnumerable<Product> Products => context.Products.Include(p => p.Category).ToArray();
+
         public PagedList<Product> GetProducts(QueryOptions options, long category = 0)
         {
             IQueryable<Product> query = context.Products.Include(p => p.Category);
@@ -25,7 +27,36 @@ namespace SportsStore.Models
         }
         public PagedList<Product> GetProducts(QueryOptions options)
         {
+            //var query = from p in context.Products
+            //            join purchasePrice in context.Prices on p.Id equals purchasePrice.ProductId
+            //            join retailPrice in context.Prices on p.Id equals retailPrice.ProductId
+            //            where 
+            //            (retailPrice.IsActive && retailPrice.PriceType == PriceType.Retail)
+            //            ||
+            //            (purchasePrice.IsActive && purchasePrice.PriceType == PriceType.Purchase)
+            //            select new ProductViewModel
+            //            {
+            //                Product = p,
+            //                PurchasePrice = purchasePrice.Value,
+            //                RetailPrice = retailPrice.Value
+            //            };
             return new PagedList<Product>(context.Products.Include(p => p.Category), options);
+        }
+        public PagedList<Product> GetProductsViewModels(QueryOptions options)
+        {
+            var query = from p in context.Products
+                        join purchasePrice in context.Prices on p.Id equals purchasePrice.ProductId
+                        where purchasePrice.IsActive && purchasePrice.PriceType == PriceType.Purchase
+                        join retailPrice in context.Prices on p.Id equals retailPrice.ProductId
+                        where retailPrice.IsActive && retailPrice.PriceType == PriceType.Retail
+                        select new ProductViewModel
+                        {
+                            Product = p,
+                            PurchasePrice = purchasePrice.Value,
+                            RetailPrice = retailPrice.Value
+                        };
+
+            return new PagedList<Product>(context.Products.Include(p => p.Prices), options);
         }
         public Product GetProduct(long key) => context.Products.Include(p => p.Category).First(p => p.Id == key);
         public void AddProduct(Product product)
@@ -37,11 +68,7 @@ namespace SportsStore.Models
         {
             Product p = context.Products.Find(product.Id);
             p.Name = product.Name;
-            //p.Category = product.Category;
-            p.PurchasePrice = product.PurchasePrice;
-            p.RetailPrice = product.RetailPrice;
             p.CategoryId = product.CategoryId;
-            //context.Products.Update(product);
             context.SaveChanges();
         }
         public void UpdateAll(Product[] products)
@@ -55,8 +82,6 @@ namespace SportsStore.Models
                 Product requestProduct = data[databaseProduct.Id];
                 databaseProduct.Name = requestProduct.Name;
                 databaseProduct.Category = requestProduct.Category;
-                databaseProduct.PurchasePrice = requestProduct.PurchasePrice;
-                databaseProduct.RetailPrice = requestProduct.RetailPrice;
             }
 
             context.SaveChanges();

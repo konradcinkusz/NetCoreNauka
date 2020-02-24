@@ -16,9 +16,7 @@ namespace SportsStore.Models
             {
                 Id = p.Id,
                 Name = p.Name,
-                PurchasePrice = p.PurchasePrice,
                 Description = p.Description,
-                RetailPrice = p.RetailPrice,
                 CategoryId = p.CategoryId,
                 Category = new
                 {
@@ -38,9 +36,7 @@ namespace SportsStore.Models
                 {
                     Id = p.Id,
                     Name = p.Name,
-                    PurchasePrice = p.PurchasePrice,
                     Description = p.Description,
-                    RetailPrice = p.RetailPrice,
                     CategoryId = p.CategoryId,
                     Category = new
                     {

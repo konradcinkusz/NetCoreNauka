@@ -26,8 +26,6 @@
             <div class="col-1">@p.Id</div>
             <div class="col">@p.Name</div>
             <div class="col">@p.Category.Name</div>
-            <div class="col text-right">@p.PurchasePrice</div>
-            <div class="col text-right">@p.RetailPrice</div>
             <div class="col">
                 <form asp-action="Delete" method="post">
                     <a asp-action="UpdateProduct" asp-route-key="@p.Id" class="btn btn-outline-primary">Edit</a>

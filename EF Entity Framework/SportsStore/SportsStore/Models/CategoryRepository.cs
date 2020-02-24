@@ -1,5 +1,5 @@
 ﻿using SportsStore.Models.Pages;
-using SportsStore.ViewModels;
+using SportsStore.Models.ViewModels;
 using System.Collections.Generic;
 using System.Linq;
 
