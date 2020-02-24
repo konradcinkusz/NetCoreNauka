@@ -4,9 +4,26 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
 using SportsStore.Models;
+using SportsStoreEF.Models;
 
 namespace SportsStore
 {
+    public class DesignTimeDbContextFactoryIdentity : IDesignTimeDbContextFactory<AppIdentityDbContext>
+    {
+        public AppIdentityDbContext CreateDbContext(string[] args)
+        {
+            var envName = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+
+            IConfigurationRoot configuration = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json", optional: false)
+                .AddJsonFile($"appsettings.{envName}.json")
+                .Build();
+            var builder = new DbContextOptionsBuilder<AppIdentityDbContext>();
+            builder.UseSqlServer(configuration["Data:SportStoreIdentity:ConnectionString"]);
+            return new AppIdentityDbContext(builder.Options);
+        }
+    }
     public class DesignTimeDbContextFactory : IDesignTimeDbContextFactory<DataContext>
     {
         public DataContext CreateDbContext(string[] args)
