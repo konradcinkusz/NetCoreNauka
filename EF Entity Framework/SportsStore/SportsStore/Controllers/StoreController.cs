@@ -19,7 +19,7 @@ namespace SportsStore.Controllers
         {
             ViewBag.Categories = categoryRepository.GetCategoriesViewModels(catOptions);
             ViewBag.SelectedCategory = category;
-            return View(productRepository.GetProducts(productOptions, category));
+            return View(productRepository.GetProductViewModels(productOptions, category));
         }
     }
 }

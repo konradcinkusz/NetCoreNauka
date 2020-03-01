@@ -16,9 +16,29 @@ namespace SportsStore.Models
         }
         public IEnumerable<Product> Products => context.Products.Include(p => p.Category).ToArray();
 
+        public PagedList<ProductViewModel> GetProductViewModels(QueryOptions options, long category = 0)
+        {
+            IQueryable<ProductViewModel> query = from r in context.Prices
+                                                 join f in context.Products on r.ProductId equals f.Id
+                                                 group r by r.Product into pid
+                                                 select new ProductViewModel
+                                                 {
+                                                     Product = pid.Key,
+                                                     RetailPrice = pid.FirstOrDefault(p => p.PriceType == PriceType.Retail).Value,
+                                                     PurchasePrice = pid.FirstOrDefault(p => p.PriceType == PriceType.Purchase).Value
+                                                 };
+
+            if (category != 0)
+            {
+                query = query.Where(p => p.Product.CategoryId == category);
+            }
+
+            return new PagedList<ProductViewModel>(query, options);
+        }
         public PagedList<Product> GetProducts(QueryOptions options, long category = 0)
         {
-            IQueryable<Product> query = context.Products.Include(p => p.Category);
+
+            IQueryable<Product> query = context.Products.Include(p => p.Prices);
             if (category != 0)
             {
                 query = query.Where(p => p.CategoryId == category);
@@ -58,7 +78,7 @@ namespace SportsStore.Models
 
             return new PagedList<Product>(context.Products.Include(p => p.Prices), options);
         }
-        public Product GetProduct(long key) => context.Products.Include(p => p.Category).First(p => p.Id == key);
+        public Product GetProduct(long key) => context.Products.Include(p=>p.Prices).Include(p => p.Category).First(p => p.Id == key);
         public void AddProduct(Product product)
         {
             this.context.Products.Add(product);

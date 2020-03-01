@@ -3,8 +3,7 @@
 {
     <div>
         @Model.Selections.Count() items,
-    $@(Model.Selections.Sum(l => l.Quantity
-   * l.Product.RetailPrice).ToString("f2"))
+    $@(Model.Selections.Sum(l => l.Quantity * l.Product.Prices.First(x=>x.PriceType == PriceType.Retail).Value).ToString("f2"))
 </div>
 if (ViewContext.RouteData.Values["controller"] as string != "Cart")
 {

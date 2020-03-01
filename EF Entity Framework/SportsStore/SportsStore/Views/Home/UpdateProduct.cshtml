@@ -24,14 +24,12 @@
             }
         </select>
     </div>
-    <div class="form-group">
-        <label asp-for="PurchasePrice"></label>
-        <input asp-for="PurchasePrice" class="form-control" />
-    </div>
-    <div class="form-group">
-        <label asp-for="RetailPrice"></label>
-        <input asp-for="RetailPrice" class="form-control" />
-    </div>
+    @foreach (Price p in Model.Prices)
+    {
+        <div class="form-group">
+            @Html.Partial("Price", p)
+        </div>
+    }
     <div class="text-center">
         <button class="btn btn-primary" type="submit">Save</button>
         <a asp-action="Index" class="btn btn-secondary">Cancel</a>
